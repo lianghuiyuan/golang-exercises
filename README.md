@@ -1,7 +1,8 @@
 # golang-exercises
-golang学习笔记+示例
 
 ## 基础知识
+
+> https://gobyexample-cn.github.io/
 
 
 
