@@ -1,30 +1,31 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"strings"
 )
 
 func main() {
-	counts := make(map[string]int)
-	input := bufio.NewScanner(os.Stdin)
-	for input.Scan() {
-		text := input.Text()
-		if strings.ToLower(text) == "exit" {
-			fmt.Println("收到退出命令!")
-			break
+	counts := make(map[string]map[string]int)
+	for _, args := range os.Args[1:] {
+		data, err := os.ReadFile(args)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "dup3 读文件%v 失败: %v \n", args, err)
+			continue
 		}
-		counts[text]++
-		fmt.Println("输入的行内容为：", text)
+		for _, line := range strings.Split(string(data), "\n") {
+			if counts[args] == nil {
+				counts[args] = make(map[string]int)
+			}
+			counts[args][line]++
+		}
 	}
-	if err := input.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "读取输入时发生错误：", err)
-	}
-	for k, v := range counts {
-		if v > 1 {
-			fmt.Println("重复行：", k, "数量：", v)
+	for file, v := range counts {
+		for text, count := range v {
+			if count > 1 {
+				fmt.Println("文件：", file, "重复行：", text, "数量：", count)
+			}
 		}
 	}
 }
