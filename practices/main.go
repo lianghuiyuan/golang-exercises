@@ -2,30 +2,28 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"net/http"
 	"os"
-	"strings"
 )
 
 func main() {
-	counts := make(map[string]map[string]int)
-	for _, args := range os.Args[1:] {
-		data, err := os.ReadFile(args)
+	for _, url := range os.Args[1:] {
+		resp, err := http.Get(url)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "dup3 读文件%v 失败: %v \n", args, err)
-			continue
+			fmt.Fprintf(os.Stderr, "从 %v 获取数据失败: %v\n", url, err)
+			continue //继续下一个循环
+			// os.Exit(1)  //直接退出程序
 		}
-		for _, line := range strings.Split(string(data), "\n") {
-			if counts[args] == nil {
-				counts[args] = make(map[string]int)
-			}
-			counts[args][line]++
+		fmt.Println("11111111111111111: %s", url)
+		b, err := io.ReadAll(resp.Body)   
+		resp.Body.Close()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "解析 body 数据失败: %v\n", err)
+			continue // 继续下一个循环
+			// os.Exit(1) // 直接退出程序
 		}
-	}
-	for file, v := range counts {
-		for text, count := range v {
-			if count > 1 {
-				fmt.Println("文件：", file, "重复行：", text, "数量：", count)
-			}
-		}
+		fmt.Println(b)
+		// fmt.Printf("%s", b)
 	}
 }
