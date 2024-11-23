@@ -1,7 +1,7 @@
 [
   "obsidian-git",
   "obsidian-markdown-formatting-assistant-plugin",
-  "execute-code",
   "obsidian-local-rest-api",
-  "api-request"
+  "api-request",
+  "code-emitter"
 ]
