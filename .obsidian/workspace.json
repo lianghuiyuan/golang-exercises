@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "13. 底层编程/13.4. 通过cgo调用C代码.md",
+                "file": "8. Goroutines 和 Channels/8.1 Goroutines.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13.4. 通过cgo调用C代码"
+              "title": "8.1 Goroutines"
             }
           }
         ],
@@ -199,11 +199,11 @@
       "obsidian-markdown-formatting-assistant-plugin:Open Markdown Formatting Assistant": false
     }
   },
-  "active": "452c723e6cf89cd8",
+  "active": "7ce1e69a948dc69d",
   "lastOpenFiles": [
+    "13. 底层编程/13.4. 通过cgo调用C代码.md",
     "9. 基于共享变量的并发",
     "13. 底层编程/13.3. 示例 深度相等判断（未完）.md",
-    "13. 底层编程/13.4. 通过cgo调用C代码.md",
     "13. 底层编程/13.2. unsafe.Pointer.md",
     "13. 底层编程/13.1. unsafe.Sizeof, Alignof 和 Offsetof.md",
     "12. 反射/12.8. 显示一个类型的方法集.md",
@@ -237,7 +237,6 @@
     "6. 方法",
     "5. 函数/images/Pasted image 20241213115652.png",
     "5. 函数/images",
-    "5. 函数",
     "4. 复合数据类型/images/IMG_0139.jpeg",
     "4. 复合数据类型/images/IMG_0138.jpeg",
     "1. 基础结构综述/images/Pasted image 20241120194735.png",
